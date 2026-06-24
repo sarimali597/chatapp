@@ -14,7 +14,7 @@ const allowedOrigins =
   rawClientUrl === "*" ? "*" : rawClientUrl.split(",").map((origin) => origin.trim());
 
 const app = express();
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors({ origin: "https://chatapp-ruddy-three.vercel.app/" }));
 app.use(express.json());
 
 const server = http.createServer(app);
