@@ -20,7 +20,7 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
+    origin: "https://chatapp-ruddy-three.vercel.app/",
     methods: ["GET", "POST"],
   },
 });
