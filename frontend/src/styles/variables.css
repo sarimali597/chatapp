@@ -1,0 +1,77 @@
+:root {
+  /* --- Brand palette (fixed by brief) --- */
+  --c-white: #ffffff;
+  --c-royal: #2563eb;
+  --c-jet: #1f2937;
+  --c-ink: #111827;
+  --c-mist: #14b8a6;
+
+  /* --- Surfaces --- */
+  --bg-app: var(--c-ink);
+  --bg-surface: var(--c-jet);
+  --bg-surface-hover: rgba(255, 255, 255, 0.045);
+  --bg-surface-active: rgba(37, 99, 235, 0.14);
+  --bg-elevated: #232f42; /* one step up from jet, used sparingly for popovers/modals */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  /* --- Text --- */
+  --text-primary: var(--c-white);
+  --text-secondary: rgba(255, 255, 255, 0.64);
+  --text-tertiary: rgba(255, 255, 255, 0.4);
+  --text-on-accent: var(--c-white);
+
+  /* --- Accents --- */
+  --accent-primary: var(--c-royal);
+  --accent-primary-hover: #3b74f0;
+  --accent-secondary: var(--c-mist);
+  --accent-danger: #ef4444;
+  --accent-warning: #f59e0b;
+
+  /* --- Typography --- */
+  --font-display: 'Sora', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+  --fs-xs: 0.6875rem;
+  --fs-sm: 0.8125rem;
+  --fs-base: 0.9375rem;
+  --fs-md: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.625rem;
+  --fs-2xl: 2.25rem;
+
+  /* --- Spacing --- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+
+  /* --- Radius (kept tight & rectilinear, not the generic pill/rounded look) --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  /* --- Shadow --- */
+  --shadow-elevated: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 4px 14px rgba(0, 0, 0, 0.28);
+
+  /* --- Motion --- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-standard: 220ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
