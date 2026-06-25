@@ -187,7 +187,7 @@ The frontend runs on `http://localhost:5173` by default (Vite).
 
 | Variable | Description |
 |---|---|
-| `VITE_API_URL` | Base URL of the backend (e.g. `http://localhost:5000` or your Render URL) |
+| `VITE_API_URL` | Base URL of the backend (e.g. `http://localhost:3000` or your Render URL) |
 
 ---
 
