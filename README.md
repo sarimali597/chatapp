@@ -145,7 +145,7 @@ cp .env.example .env   # then fill in your real values
 npm run dev             # nodemon, or: npm start
 ```
 
-The backend listens on `http://localhost:5000` by default.
+The backend listens on `http://localhost:3000` by default.
 
 ### 2. Frontend
 
