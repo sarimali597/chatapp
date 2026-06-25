@@ -70,7 +70,7 @@ app.use(errorHandler);
 // --- Socket.IO ---
 initSocket(io);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`[ChatFlow] Server running on port ${PORT}`);
   console.log(`[ChatFlow] Allowed origins: ${allowedOrigins.join(', ')}`);
