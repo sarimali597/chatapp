@@ -20,7 +20,7 @@ const server = http.createServer(app);
 // first hop lets express-rate-limit see real client IPs instead of the proxy's.
 app.set('trust proxy', 1);
 
-const allowedOrigins = (process.env."https://chatapp-ruddy-three.vercel.app" || 'http://localhost:5173')
+const allowedOrigins = (process.env.FRONTEND_URL || 'http://localhost:5173')
   .split(',')
   .map((origin) => origin.trim())
   .filter(Boolean);
