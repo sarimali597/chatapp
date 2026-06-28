@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Palette — exactly as specified in the ChatFlow design system */
+  --color-white: #ffffff;
+  --color-royal-blue: #2563eb;
+  --color-royal-blue-light: #3b82f6;
+  --color-royal-blue-dark: #1d4ed8;
+  --color-jet-black: #1f2937;
+  --color-ink-black: #111827;
+  --color-ocean-mist: #14b8a6;
+  --color-ocean-mist-light: #2dd4bf;
+
+  /* Type system: Sora carries headlines and anything that needs
+     presence (join screen, mode cards); Inter carries every line of
+     actual conversation, where legibility at small sizes matters more
+     than personality. */
+  --font-display: "Sora", "ui-sans-serif", system-ui, sans-serif;
+  --font-body: "Inter", "ui-sans-serif", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-jet-black;
+  }
+
+  html,
+  body {
+    @apply bg-ink-black text-white;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* Keyboard focus must stay visible everywhere — dark UIs are the
+     easiest place to accidentally erase it. */
+  :focus-visible {
+    outline: 2px solid var(--color-ocean-mist);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* The one gradient the spec calls for, used sparingly on the landing
+     screen only. */
+  .gradient-bottom-right {
+    background: radial-gradient(
+      circle at 100% 100%,
+      color-mix(in srgb, var(--color-ocean-mist) 18%, transparent) 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 0% 0%,
+      color-mix(in srgb, var(--color-royal-blue) 22%, transparent) 0%,
+      transparent 50%
+    ),
+    var(--color-ink-black);
+  }
+
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-jet-black) transparent;
+  }
+  .scroll-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background-color: var(--color-jet-black);
+    border-radius: 999px;
+  }
+
+  .animate-message-in {
+    animation: message-in 220ms ease-out;
+  }
+}
+
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
