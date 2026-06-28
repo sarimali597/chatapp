@@ -57,7 +57,11 @@ router.post('/login', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN || '12h' }
     );
+console.log("Expected Username:", process.env.ADMIN_USERNAME);
+console.log("Received Username:", username);
 
+const valid = await bcrypt.compare(password, expectedHash);
+console.log("Password Match:", valid);
     res.json({ token });
   } catch (err) {
     console.error('[adminAuth] Login failed unexpectedly:', err.message);
