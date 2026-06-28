@@ -42,10 +42,41 @@ router.post('/login', async (req, res) => {
     return res.status(500).json({ error: 'Admin login is not configured on the server.' });
   }
 
-  try {
-    if (username !== expectedUsername) {
-      return res.status(401).json({ error: 'Invalid credentials.' });
-    }
+try {
+  console.log("========== ADMIN LOGIN ATTEMPT ==========");
+  console.log("Expected Username:", expectedUsername);
+  console.log("Received Username:", username);
+  console.log("JWT Secret Exists:", !!process.env.JWT_SECRET);
+  console.log("Hash Exists:", !!expectedHash);
+
+  if (username !== expectedUsername) {
+    console.log("USERNAME MATCH: FALSE");
+    return res.status(401).json({ error: 'Invalid credentials.' });
+  }
+
+  console.log("USERNAME MATCH: TRUE");
+
+  const valid = await bcrypt.compare(password, expectedHash);
+
+  console.log("PASSWORD MATCH:", valid);
+
+  if (!valid) {
+    return res.status(401).json({ error: 'Invalid credentials.' });
+  }
+
+  const token = jwt.sign(
+    { role: 'admin', username },
+    process.env.JWT_SECRET,
+    { expiresIn: process.env.JWT_EXPIRES_IN || '12h' }
+  );
+
+  console.log("LOGIN SUCCESS");
+
+  res.json({ token });
+} catch (err) {
+  console.error('[adminAuth] Login failed unexpectedly:', err);
+  res.status(500).json({ error: 'Something went wrong signing you in.' });
+}
 
     const valid = await bcrypt.compare(password, expectedHash);
     if (!valid) {
@@ -57,11 +88,7 @@ router.post('/login', async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN || '12h' }
     );
-console.log("Expected Username:", process.env.ADMIN_USERNAME);
-console.log("Received Username:", username);
 
-const valid = await bcrypt.compare(password, expectedHash);
-console.log("Password Match:", valid);
     res.json({ token });
   } catch (err) {
     console.error('[adminAuth] Login failed unexpectedly:', err.message);
