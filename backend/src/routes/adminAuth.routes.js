@@ -48,11 +48,10 @@ console.error(
 '[adminAuth] ADMIN_USERNAME / ADMIN_PASSWORD_HASH / JWT_SECRET not fully configured.'
 );
 
-```
+
 return res.status(500).json({
   error: 'Admin login is not configured on the server.',
 });
-```
 
 }
 
@@ -63,7 +62,7 @@ console.log('Received Username:', username);
 console.log('JWT Secret Exists:', !!process.env.JWT_SECRET);
 console.log('Hash Exists:', !!expectedHash);
 
-```
+
 if (username !== expectedUsername) {
   console.log('USERNAME MATCH: FALSE');
 
@@ -98,16 +97,16 @@ const token = jwt.sign(
 console.log('LOGIN SUCCESS');
 
 return res.json({ token });
-```
+
 
 } catch (err) {
 console.error('[adminAuth] Login failed unexpectedly:', err);
 
-```
+
 return res.status(500).json({
   error: 'Something went wrong signing you in.',
 });
-```
+
 
 }
 });
