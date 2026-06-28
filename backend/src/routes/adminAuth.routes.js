@@ -48,6 +48,7 @@ try {
   console.log("Received Username:", username);
   console.log("JWT Secret Exists:", !!process.env.JWT_SECRET);
   console.log("Hash Exists:", !!expectedHash);
+}
 
   if (username !== expectedUsername) {
     console.log("USERNAME MATCH: FALSE");
