@@ -43,16 +43,6 @@ router.post('/login', async (req, res) => {
   }
 
   try {
-    // TEMP DIAGNOSTIC — safe to leave in briefly, remove once login works.
-    // Prints lengths/edges only, never the actual secret values.
-    console.log('[adminAuth] login attempt', {
-      typedUsernameLen: username.length,
-      envUsernameLen: expectedUsername.length,
-      envUsernameTrimmedMatches: username.trim() === expectedUsername.trim(),
-      envHashLen: expectedHash.length, // should be exactly 60
-      envHashStartsWith: expectedHash.slice(0, 7), // should look like "$2a$12$" or "$2b$12$"
-    });
-
     // Trimmed comparison — a trailing space pasted into Render's env var
     // field (or in the login form) shouldn't be able to silently break
     // login forever. Passwords are deliberately NOT trimmed.
